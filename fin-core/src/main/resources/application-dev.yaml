@@ -1,0 +1,46 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fin_core_db
+    driver-class-name: org.postgresql.Driver
+    username: dev_user
+    password: dev_password
+  liquibase:
+    change-log: classpath:/db/changelog/master.xml
+    enabled: true
+    default-schema: public
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    enabled: true
+    bootstrap-servers: localhost:29092
+    topics:
+      banks-topic-in: banks-topic-in
+      categories-topic-in: categories-topic-in
+      transactions-topic-in: transactions-topic-in
+      banks-topic-out: banks-topic-out
+      categories-topic-out: categories-topic-out
+      transactions-topic-out: transactions-topic-out
+    consumer:
+      group-id: fin-core-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      backoff-interval-millis: 100
+      backoff-max-failure-count: 3
+      listener-concurrency-count: 5
+      spring-json-trusted-packages: "*"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 5
+      linger-ms: 10
+      batch-size: 16384
+      compression-type: snappy
+      max-in-flight-requests: 5
+      request-timeout-ms: 30000
+      delivery-timeout-ms: 120000

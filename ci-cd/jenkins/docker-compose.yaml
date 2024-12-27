@@ -1,0 +1,23 @@
+version: '3.8'
+
+networks:
+  txn_control_jenkins_network:
+    external: true
+
+services:
+  jenkins:
+    image: vlad1kavkaz/jenkins-w-mvn
+    container_name: jenkins
+    networks:
+      - txn_control_jenkins_network
+    ports:
+      - "8082:8082"
+      - "50000:50000"
+    volumes:
+      - txn_control_jenkins_home:/var/txn_control_jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      JENKINS_OPTS: --httpPort=8082
+
+volumes:
+  txn_control_jenkins_home:

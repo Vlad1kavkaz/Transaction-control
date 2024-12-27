@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: KafkaDto Schemas
+  description: Модели сообщений в Kafka
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    TransactionRequestDto:
+      type: object
+      required:
+        - transactionId
+        - type
+      properties:
+        transactionId:
+          type: string
+          format: uuid
+          description: Уникальный идентификатор транзакции
+        type:
+          type: string
+          enum:
+            - EXPENSE
+            - INCOME
+          description: Тип транзакции (доход/расход)
+
+    TransactionsFilterRequestDto:
+      type: object
+      required:
+        - userId
+      properties:
+        userId:
+          type: string
+          format: uuid
+          description: Уникальный идентификатор клиента
+        type:
+          type: string
+          enum:
+            - EXPENSE
+            - INCOME
+          description: Тип транзакции (доход/расход)
+        startDate:
+          type: string
+          format: date
+          description: Дата и время начала фильтрации
+        endDate:
+          type: string
+          format: date
+          description: Дата и время конца фильтрации
+        page:
+          type: integer
+          default: 0
+          description: Пагинация
+        size:
+          type: integer
+          default: 10
+          description: Количество транзакций в ответе
