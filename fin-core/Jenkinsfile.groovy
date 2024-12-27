@@ -20,21 +20,7 @@ pipeline {
         stage('Compile and Build') {
             steps {
                 echo "Compiling and building the project in ${SERVICE_NAME}..."
-                sh "cd ${SERVICE_NAME} && mvn clean compile"
-            }
-        }
-
-        stage('Run Unit Tests') {
-            steps {
-                echo "Running unit tests in ${SERVICE_NAME}..."
-                sh "cd ${SERVICE_NAME} && mvn test"
-            }
-        }
-
-        stage('Package Application') {
-            steps {
-                echo "Packaging application in ${SERVICE_NAME}..."
-                sh "cd ${SERVICE_NAME} && mvn package"
+                sh "cd ${SERVICE_NAME} && mvn clean package"
             }
         }
 
