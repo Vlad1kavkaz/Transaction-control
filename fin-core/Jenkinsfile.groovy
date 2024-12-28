@@ -45,7 +45,7 @@ pipeline {
         }
         failure {
             echo 'Pipeline failed!'
-            sh "docker rm -f ${DOCKER_IMAGE}" // Удаляем контейнер в случае фейла
+            sh "docker rm -f ${DOCKER_IMAGE}"
         }
     }
 }
