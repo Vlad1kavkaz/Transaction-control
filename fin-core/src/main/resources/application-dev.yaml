@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:postgresql://localhost:5432/fin_core_db
+    url: jdbc:postgresql://localhost:5430/fin_core_db
     driver-class-name: org.postgresql.Driver
     username: dev_user
     password: dev_password
