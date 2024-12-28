@@ -8,7 +8,9 @@ spring:
     username: dev_user
     password: dev_password
   liquibase:
-    enabled: false
+    change-log: classpath:/db/changelog/master.xml
+    enabled: true
+    default-schema: public
   jpa:
     hibernate:
       ddl-auto: update

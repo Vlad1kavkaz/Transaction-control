@@ -1,0 +1,6 @@
+server:
+  port: 808
+
+spring:
+  profiles:
+    active: local
