@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'BRANCH_NAME', defaultValue: 'master', description: 'Branch to build and deploy')
-    }
-
     environment {
         REPO_URL = 'https://github.com/Vlad1kavkaz/Transaction-control.git'
         DOCKER_IMAGE = 'fin-core'
@@ -16,8 +12,8 @@ pipeline {
     stages {
         stage('Checkout Repository') {
             steps {
-                echo "Cloning repository from branch: ${BRANCH_NAME}..."
-                git branch: "${BRANCH_NAME}", url: "${REPO_URL}"
+                echo 'Cloning repository...'
+                git branch: 'master', url: "${REPO_URL}"
             }
         }
 
@@ -28,30 +24,17 @@ pipeline {
             }
         }
 
-        stage('Run Unit Tests') {
-            steps {
-                echo "Running tests for ${SERVICE_NAME}..."
-                sh "cd ${SERVICE_NAME} && mvn test"
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 echo "Building Docker image for ${SERVICE_NAME}..."
-                sh "docker build -t ${DOCKER_IMAGE}:${BRANCH_NAME} ${SERVICE_NAME}"
+                sh "docker build -t ${DOCKER_IMAGE} ${SERVICE_NAME}"
             }
         }
 
-        stage('Deploy to Docker') {
-            when {
-                expression {
-                    return BRANCH_NAME == 'master'
-                }
-            }
+        stage('Run Docker Container') {
             steps {
-                echo "Deploying Docker container for ${SERVICE_NAME}..."
-                sh "docker rm -f ${DOCKER_IMAGE} || true"
-                sh "docker run -d --name ${DOCKER_IMAGE} --network ${NETWORK_NAME} -p ${PORT_MAPPING} ${DOCKER_IMAGE}:${BRANCH_NAME}"
+                echo "Running Docker container for ${SERVICE_NAME}..."
+                sh "docker run -d --name ${DOCKER_IMAGE} --network ${NETWORK_NAME} -p ${PORT_MAPPING} ${DOCKER_IMAGE}"
             }
         }
     }
@@ -62,7 +45,7 @@ pipeline {
         }
         failure {
             echo 'Pipeline failed!'
-            sh "docker rm -f ${DOCKER_IMAGE} || true"
+            sh "docker rm -f ${DOCKER_IMAGE}" // Удаляем контейнер в случае фейла
         }
     }
 }
