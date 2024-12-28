@@ -40,3 +40,8 @@ spring:
       max-in-flight-requests: 5
       request-timeout-ms: 30000
       delivery-timeout-ms: 120000
+  feign-client:
+    period: 1000
+    max-period: 5000
+    max-attempts: 3
+    url: localhost:8087
