@@ -4,7 +4,3 @@ server:
 spring:
   profiles:
     active: local
-  liquibase:
-    change-log: classpath:/db/changelog/master.xml
-    enabled: true
-    default-schema: public
