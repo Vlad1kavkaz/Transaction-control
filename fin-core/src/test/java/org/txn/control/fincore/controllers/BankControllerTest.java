@@ -1,4 +1,4 @@
-package org.txn.control.fincore.controller;
+package org.txn.control.fincore.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

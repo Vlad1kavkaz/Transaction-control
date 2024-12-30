@@ -75,6 +75,29 @@ class BankRepositoryTest extends BaseRepositoryTest<BankEntity> {
     }
 
     @Test
+    void testFindByName_ExisingName() {
+        // Arrange
+        BankEntity bank = new BankEntity(null, "someName", "Russia");
+        entityManager.persistFlushFind(bank);
+
+        // Act
+        Optional<BankEntity> foundBank = repository.findByName(bank.getName());
+
+        // Assert
+        assertThat(foundBank).isPresent();
+        assertThat(foundBank.get().getName()).isEqualTo(bank.getName());
+    }
+
+    @Test
+    void testFindByName_NonExistingName() {
+        // Act
+        Optional<BankEntity> foundBank = repository.findByName("someName");
+
+        // Assert
+        assertThat(foundBank).isNotPresent();
+    }
+
+    @Test
     void testFindById_ExistingId() {
         // Arrange
         BankEntity savedBank = entityManager.persistFlushFind(testEntity);

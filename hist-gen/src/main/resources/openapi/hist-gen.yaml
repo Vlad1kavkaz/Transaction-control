@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: Hist Gen schemas
+  description: Модели сообщений запросов и ответов в сервис
+  version: 1.0.0
+
+paths: { }
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        bankName:
+          type: string
+        amount:
+          type: number
+          format: double
+        categoryName:
+          type: string
+        date:
+          type: string
+          format: date-time
+        description:
+          type: string
+        type:
+          type: string
+          enum: [ INCOME, EXPENSE ]
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+
+    Bank:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        country:
+          type: string

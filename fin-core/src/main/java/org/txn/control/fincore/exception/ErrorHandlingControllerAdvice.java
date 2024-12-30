@@ -44,6 +44,14 @@ public class ErrorHandlingControllerAdvice {
     }
 
     @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BankNotFoundException.class)
+    public String onBankNotFoundException(final BankNotFoundException ex) {
+        log.error(ex.getMessage());
+        return ex.getMessage();
+    }
+
+    @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(RuntimeException.class)
     public String onRuntimeException(Exception ex) {

@@ -39,20 +39,20 @@ class EntityMapperTest {
     private PersonRepository personRepository;
 
     private UUID userId;
-    private UUID categoryId;
+    private String categoryId;
     private PersonEntity person;
     private CategoryEntity category;
 
     @BeforeEach
     void setUp() {
         userId = UUID.randomUUID();
-        categoryId = UUID.randomUUID();
+        categoryId = "Some name";
 
         person = new PersonEntity();
         person.setId(userId);
 
         category = new CategoryEntity();
-        category.setId(categoryId);
+        category.setId(UUID.randomUUID());
     }
 
     @Test
@@ -75,7 +75,7 @@ class EntityMapperTest {
         // Arrange
         Transaction transaction = createTransaction();
         when(personRepository.findById(userId)).thenReturn(Optional.of(person));
-        when(categoryRepository.findById(categoryId)).thenReturn(Optional.of(category));
+        when(categoryRepository.findByName(categoryId)).thenReturn(Optional.of(category));
 
         // Act
         ExpenseEntity expenseEntity = mapper.toExpenseEntity(transaction);
@@ -102,7 +102,7 @@ class EntityMapperTest {
         // Arrange
         Transaction transaction = createTransaction();
         when(personRepository.findById(userId)).thenReturn(Optional.of(person));
-        when(categoryRepository.findById(categoryId)).thenReturn(Optional.empty());
+        when(categoryRepository.findByName(categoryId)).thenReturn(Optional.empty());
 
         // Act & Assert
         assertThrows(CategoryNotFoundException.class, () -> mapper.toExpenseEntity(transaction));
@@ -122,7 +122,7 @@ class EntityMapperTest {
         return new Transaction()
                 .id(UUID.randomUUID())
                 .userId(userId)
-                .categoryId(categoryId)
+                .categoryName(categoryId)
                 .amount(BigDecimal.valueOf(100.00))
                 .date(ZonedDateTime.now())
                 .description("Test Transaction");

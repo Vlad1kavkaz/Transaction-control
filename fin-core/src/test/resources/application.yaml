@@ -42,8 +42,6 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       backoff-interval-millis: 100
       backoff-max-failure-count: 3
-      listener-concurrency-count: 5
-      spring-json-trusted-packages: "*"
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

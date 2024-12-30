@@ -50,4 +50,4 @@ spring:
     period: 1000
     max-period: 5000
     max-attempts: 3
-    url: localhost:8087
+    url: localhost:8087/v1/api

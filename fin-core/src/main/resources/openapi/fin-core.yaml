@@ -4,7 +4,7 @@ info:
   description: API for managing transactions and categories in the financial core service.
   version: 1.0.0
 servers:
-  - url: http://localhost:8080/v1/api
+  - url: http://localhost:8085/v1/api
     description: Local development server
 paths:
   /transactions:
@@ -196,12 +196,13 @@ components:
         userId:
           type: string
           format: uuid
+        bankName:
+          type: string
         amount:
           type: number
           format: double
-        categoryId:
+        categoryName:
           type: string
-          format: uuid
         date:
           type: string
           format: date-time

@@ -16,13 +16,13 @@ public class TransactionScheduler {
     private final MsGenerateClient client;
     private final ProcessingServiceDao serviceDao;
 
-    @Scheduled(fixedRate = 600000)
+    @Scheduled(fixedRate = 3000)
     public void scheduleBanks() {
         List<Bank> banks = client.banks();
         serviceDao.processBanks(banks);
     }
 
-    @Scheduled(fixedRate = 600000)
+    @Scheduled(fixedRate = 3000)
     public void scheduleCategories() {
         List<Category> categories = client.categories();
         serviceDao.processCategories(categories);

@@ -49,7 +49,7 @@ class ResponseMapperTest {
         assertThat(transaction.getDate()).isEqualTo(expenseEntity.getDate());
         assertThat(transaction.getDescription()).isEqualTo(expenseEntity.getDescription());
         assertThat(transaction.getType()).isEqualTo(Transaction.TypeEnum.EXPENSE);
-        assertThat(transaction.getCategoryId()).isEqualTo(categoryId);
+        assertThat(transaction.getCategoryName()).isEqualTo(categoryEntity.getName());
     }
 
     @Test
@@ -67,7 +67,7 @@ class ResponseMapperTest {
 
         // Assert
         assertThat(transaction).isNotNull();
-        assertThat(transaction.getCategoryId()).isNull();
+        assertThat(transaction.getCategoryName()).isNull();
     }
 
     @Test

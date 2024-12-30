@@ -1,4 +1,4 @@
-package org.txn.control.fincore.controller;
+package org.txn.control.fincore.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

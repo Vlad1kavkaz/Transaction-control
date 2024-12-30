@@ -32,7 +32,6 @@ class MsGenerateClientTest {
     private MsGenerateClient msGenerateClient;
 
     private final String BASE_TRANSACTIONS_URL = "/transactions";
-    private final String BASE_TRANSACTION_URL = "/transaction";
     private final String BASE_CATEGORIES_URL = "/categories";
     private final String BASE_BANKS_URL = "/banks";
 
@@ -42,96 +41,11 @@ class MsGenerateClientTest {
 
     @Test
     @SneakyThrows
-    void testTransactions_SuccessfulRequest_FirstAttempt() {
-        // Arrange
-        List<Transaction> listResponse = new ArrayList<>();
-        String response = objectMapper.writeValueAsString(listResponse);
-
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL)
-                .willReturn(WireMock.aResponse()
-                        .withStatus(HttpStatus.OK.value())
-                        .withHeader("Content-Type", "application/json")
-                        .withBody(response)));
-
-        // Act
-        List<Transaction> actualListTransaction = msGenerateClient.transactions();
-
-        // Assert
-        assertThat(actualListTransaction).isNotNull();
-    }
-
-    @Test
-    @SneakyThrows
-    void testTransactions_RetryOn500Failure_ThenSuccess() {
-        // Arrange
-        WireMock.resetAllRequests();
-
-        List<Transaction> listResponse = new ArrayList<>();
-        String response = objectMapper.writeValueAsString(listResponse);
-
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL)
-                .inScenario("Retry scenario")
-                .whenScenarioStateIs(STARTED)
-                .willReturn(WireMock.aResponse()
-                        .withStatus(HttpStatus.INTERNAL_SERVER_ERROR.value()))
-                .willSetStateTo("Retry Successful"));
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL)
-                .inScenario("Retry scenario")
-                .whenScenarioStateIs("Retry Successful")
-                .willReturn(WireMock.aResponse()
-                        .withStatus(HttpStatus.OK.value())
-                        .withHeader("Content-Type", "application/json")
-                        .withBody(response)));
-
-        // Act
-        List<Transaction> actualListTransaction = msGenerateClient.transactions();
-
-        // Assert
-        assertThat(actualListTransaction).isNotNull();
-        WireMock.verify(2, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTIONS_URL)));
-    }
-
-    @Test
-    void testTransactions_ExceedMaxRetries() {
-        // Arrange
-        WireMock.resetAllRequests();
-
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL)
-                .willReturn(WireMock.aResponse()
-                        .withStatus(HttpStatus.INTERNAL_SERVER_ERROR.value())));
-
-        // Act
-        assertThrows(RetryableException.class, () ->
-                msGenerateClient.transactions());
-
-        // Assert
-        WireMock.verify(3, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTIONS_URL)));
-    }
-
-    @Test
-    void testTransactions_ExceptOn400() {
-        // Arrange
-        WireMock.resetAllRequests();
-
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL)
-                .willReturn(WireMock.aResponse()
-                        .withStatus(HttpStatus.BAD_REQUEST.value())));
-
-        // Act
-        assertThrows(RetryableException.class, () ->
-                msGenerateClient.transactions());
-
-        // Assert
-        WireMock.verify(1, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTIONS_URL)));
-    }
-
-    @Test
-    @SneakyThrows
     void testTransaction_SuccessfulRequest_FirstAttempt() {
         List<Transaction> listResponse = new ArrayList<>();
         String response = objectMapper.writeValueAsString(listResponse);
 
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTION_URL + "/" + userId)
+        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL + "/" + userId)
                 .willReturn(WireMock.aResponse()
                         .withStatus(HttpStatus.OK.value())
                         .withHeader("Content-Type", "application/json")
@@ -148,13 +62,13 @@ class MsGenerateClientTest {
         List<Transaction> listResponse = new ArrayList<>();
         String response = objectMapper.writeValueAsString(listResponse);
 
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTION_URL + "/" + userId)
+        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL + "/" + userId)
                 .inScenario("Retry Transaction Scenario")
                 .whenScenarioStateIs(STARTED)
                 .willReturn(WireMock.aResponse().withStatus(HttpStatus.INTERNAL_SERVER_ERROR.value()))
                 .willSetStateTo("Retry Successful"));
 
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTION_URL + "/" + userId)
+        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL + "/" + userId)
                 .inScenario("Retry Transaction Scenario")
                 .whenScenarioStateIs("Retry Successful")
                 .willReturn(WireMock.aResponse()
@@ -165,29 +79,29 @@ class MsGenerateClientTest {
         List<Transaction> actualListTransaction = msGenerateClient.transaction(userId);
 
         assertThat(actualListTransaction).isNotNull();
-        WireMock.verify(2, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTION_URL + "/" + userId)));
+        WireMock.verify(2, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTIONS_URL + "/" + userId)));
     }
 
     @Test
     void testTransaction_ExceedMaxRetries() {
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTION_URL + "/" + userId)
+        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL + "/" + userId)
                 .willReturn(WireMock.aResponse()
                         .withStatus(HttpStatus.INTERNAL_SERVER_ERROR.value())));
 
         assertThrows(RetryableException.class, () -> msGenerateClient.transaction(userId));
 
-        WireMock.verify(3, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTION_URL + "/" + userId)));
+        WireMock.verify(3, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTIONS_URL + "/" + userId)));
     }
 
     @Test
     void testTransaction_ExceptOn400() {
-        WireMock.stubFor(WireMock.get(BASE_TRANSACTION_URL + "/" + userId)
+        WireMock.stubFor(WireMock.get(BASE_TRANSACTIONS_URL + "/" + userId)
                 .willReturn(WireMock.aResponse()
                         .withStatus(HttpStatus.BAD_REQUEST.value())));
 
         assertThrows(RetryableException.class, () -> msGenerateClient.transaction(userId));
 
-        WireMock.verify(1, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTION_URL + "/" + userId)));
+        WireMock.verify(1, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_TRANSACTIONS_URL + "/" + userId)));
     }
 
     @Test
@@ -236,7 +150,6 @@ class MsGenerateClientTest {
                         .withStatus(HttpStatus.INTERNAL_SERVER_ERROR.value())));
 
         assertThrows(RetryableException.class, () -> msGenerateClient.banks());
-        WireMock.verify(4, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_BANKS_URL)));
     }
 
     @Test

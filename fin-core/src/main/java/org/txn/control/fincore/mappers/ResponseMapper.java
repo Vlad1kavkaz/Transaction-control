@@ -17,11 +17,11 @@ import org.txn.control.fincore.model.Transaction;
 public abstract class ResponseMapper {
 
     @Mapping(target = "type", expression = "java(Transaction.TypeEnum.EXPENSE)")
-    @Mapping(target = "categoryId", expression = "java(expenseEntity.getCategory() != null ? expenseEntity.getCategory().getId() : null)")
+    @Mapping(target = "categoryName", expression = "java(expenseEntity.getCategory() != null ? expenseEntity.getCategory().getName() : null)")
     public abstract Transaction expenseToTransaction(ExpenseEntity expenseEntity);
 
     @Mapping(target = "type", expression = "java(Transaction.TypeEnum.INCOME)")
-    @Mapping(target = "categoryId", ignore = true)
+    @Mapping(target = "categoryName", ignore = true)
     public abstract Transaction incomeToTransaction(IncomeEntity incomeEntity);
 
     public abstract Category toResponseCategory(CategoryEntity categoryEntity);

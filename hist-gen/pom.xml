@@ -47,11 +47,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
@@ -122,9 +117,13 @@
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <configOptions>
                                 <useSpringBoot3>true</useSpringBoot3>
+                                <modelPropertyNaming>camelCase</modelPropertyNaming>
+                                <dateLibrary>java8</dateLibrary>
+                                <useLombok>true</useLombok>
+                                <additionalModelTypeAnnotations>@lombok.Builder</additionalModelTypeAnnotations>
                             </configOptions>
                             <modelPackage>org.txn.control.histgen.model</modelPackage>
-                            <inputSpec>${project.basedir}/src/main/resources/openapi/dto.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/openapi/hist-gen.yaml</inputSpec>
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <typeMappings>
                                 <typeMapping>Double=java.math.BigDecimal</typeMapping>
@@ -134,6 +133,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
