@@ -5,54 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="effb93e6-8812-46a1-b42d-ce3c75733e5d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/exception/BankNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/config/DictionaryConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/config/SchedulingConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/controllers/BankController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/controllers/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/controllers/TransactionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/dictionaries/BankDictionary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/dictionaries/CategoryDictionary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/BankService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/TransactionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/openapi/hist-gen.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/controllers/BankControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/controllers/CategoryControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/controllers/TransactionControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/dictionaries/BankDictionaryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/dictionaries/CategoryDictionaryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/services/BankServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/services/CategoryServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/services/TransactionServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/controller/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/controllers/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/controller/CategoriesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/controllers/CategoriesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/controller/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/controllers/TransactionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/exception/ErrorHandlingControllerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/exception/ErrorHandlingControllerAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/feign/clients/MsGenerateClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/feign/clients/MsGenerateClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/mappers/EntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/mappers/EntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/mappers/ResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/mappers/ResponseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/repositories/BankRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/repositories/BankRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/repositories/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/repositories/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/scheduling/TransactionScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/scheduling/TransactionScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/resources/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/resources/openapi/fin-core.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/resources/openapi/fin-core.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/controller/BankControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/controllers/BankControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/controller/CategoriesControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/controllers/CategoriesControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/controller/TransactionsControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/controllers/TransactionsControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/feign/MsGenerateClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/feign/MsGenerateClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/mappers/EntityMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/mappers/EntityMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/mappers/ResponseMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/mappers/ResponseMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/BankRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/BankRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/config/RandomConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.changelog/master.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.changelog/v.1.0.0/001_create_tables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/services/TransactionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/txn/control/histgen/services/TransactionServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +48,7 @@
     "JUnit.CategoryServiceTest.executor": "Run",
     "JUnit.TransactionControllerTest.getTransactions_ReturnsListOfTransactions.executor": "Run",
     "JUnit.TransactionServiceTest.executor": "Run",
+    "JUnit.TransactionServiceTest.getTransactionsForUserId_ShouldReturnTransactions.executor": "Run",
     "Maven.hist-gen [clean,compile].executor": "Run",
     "Maven.hist-gen [clean,install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -145,21 +102,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryDictionaryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hist-gen" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.txn.control.histgen.dictionaries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.txn.control.histgen.dictionary" />
-      <option name="MAIN_CLASS_NAME" value="org.txn.control.histgen.dictionaries.CategoryDictionaryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CategoryServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hist-gen" />
       <extension name="coverage">
@@ -190,6 +132,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TransactionServiceTest.getTransactionsForUserId_ShouldReturnTransactions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hist-gen" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.txn.control.histgen.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.txn.control.histgen.services" />
+      <option name="MAIN_CLASS_NAME" value="org.txn.control.histgen.services.TransactionServiceTest" />
+      <option name="METHOD_NAME" value="getTransactionsForUserId_ShouldReturnTransactions" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HistGenApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="hist-gen" />
@@ -201,10 +159,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TransactionServiceTest" />
+        <item itemvalue="JUnit.TransactionServiceTest.getTransactionsForUserId_ShouldReturnTransactions" />
         <item itemvalue="JUnit.All in hist-gen" />
         <item itemvalue="JUnit.CategoryServiceTest" />
         <item itemvalue="JUnit.BankServiceTest" />
-        <item itemvalue="JUnit.CategoryDictionaryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -230,7 +188,7 @@
       <workItem from="1735487796990" duration="3725000" />
       <workItem from="1735515143858" duration="27000" />
       <workItem from="1735553232522" duration="606000" />
-      <workItem from="1735571416375" duration="5966000" />
+      <workItem from="1735571416375" duration="7810000" />
     </task>
     <servers />
   </component>

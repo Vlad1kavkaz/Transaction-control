@@ -16,13 +16,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class TransactionService {
 
-    private final Random rand = new Random();
+    private final Random rand;
     private final List<Bank> banks;
     private final List<Category> categories;
 
     public List<Transaction> getTransactionsForUserId(UUID userId) {
         List<Transaction> transactions = new ArrayList<>();
-        int size = rand.nextInt() % 5;
+        int size = rand.nextInt(5);
         for (int i = 0; i < size; i++) {
             Transaction.TypeEnum type = rand.nextBoolean() ? Transaction.TypeEnum.EXPENSE : Transaction.TypeEnum.INCOME;
 
