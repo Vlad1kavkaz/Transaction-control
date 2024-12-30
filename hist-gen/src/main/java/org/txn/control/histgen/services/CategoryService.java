@@ -26,7 +26,7 @@ public class CategoryService {
         return categoryList;
     }
 
-    @Scheduled(fixedRate = 4200)
+    @Scheduled(fixedRate = 420000)
     private void scheduled() {
         if (CategoryDictionary.CATEGORIES.size() - 1 >= count) {
             categories.add(CategoryDictionary.CATEGORIES.get(count));

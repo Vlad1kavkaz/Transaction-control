@@ -26,7 +26,7 @@ public class BankService {
         return bankList;
     }
 
-    @Scheduled(fixedRate = 4200)
+    @Scheduled(fixedRate = 420000)
     private void scheduled() {
         if (BankDictionary.BANKS.size() - 1 >= count) {
             banks.add(BankDictionary.BANKS.get(count));
