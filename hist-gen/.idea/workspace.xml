@@ -5,11 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="effb93e6-8812-46a1-b42d-ce3c75733e5d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/entities/RoleEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/Jenkinsfile.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/PersonRegApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/controllers/PersonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/controllers/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/entities/PersonEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/entities/RoleEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/exception/ErrorHandlingControllerAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/exception/PersonNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/exception/RoleNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/mappers/RequestMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/mappers/ResponseMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/repositories/PersonRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/repositories/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/services/PersonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/services/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/application-local.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/db.changelog/master.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/db.changelog/v.1.0.0/001_create_tables.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/openapi/person-reg.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/controllers/PersonControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/controllers/RoleControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/exception/ErrorHandlingControllerAdviceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/mappers/RequestMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/mappers/ResponseMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/repositories/RoleRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/services/PersonServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/services/RoleServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ci-cd/Jenkinsfile.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../ci-cd/Jenkinsfile.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/scheduling/TransactionScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/scheduling/TransactionScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/entities/PersonEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/entities/PersonEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/resources/db/changelog/v.1.0.0/001_create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/resources/db/changelog/v.1.0.0/001_create_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/ExpenseRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/ExpenseRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/IncomeRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/IncomeRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/PersonRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/PersonRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/BankService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/txn/control/histgen/services/CategoryService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,48 +73,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.All in hist-gen.executor": "Run",
-    "JUnit.BankControllerTest.executor": "Run",
-    "JUnit.BankDictionaryTest.executor": "Run",
-    "JUnit.BankServiceTest.executor": "Run",
-    "JUnit.CategoryControllerTest.executor": "Run",
-    "JUnit.CategoryDictionaryTest.executor": "Run",
-    "JUnit.CategoryServiceTest.executor": "Run",
-    "JUnit.TransactionControllerTest.getTransactions_ReturnsListOfTransactions.executor": "Run",
-    "JUnit.TransactionServiceTest.executor": "Run",
-    "JUnit.TransactionServiceTest.getTransactionsForUserId_ShouldReturnTransactions.executor": "Run",
-    "Maven.hist-gen [clean,compile].executor": "Run",
-    "Maven.hist-gen [clean,install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.HistGenApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/28218/IdeaProjects/txn-control/ci-cd",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/28218/IdeaProjects/txn-control/hist-gen/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.All in hist-gen.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BankControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BankDictionaryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BankServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CategoryControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CategoryDictionaryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CategoryServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TransactionControllerTest.getTransactions_ReturnsListOfTransactions.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TransactionServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TransactionServiceTest.getTransactionsForUserId_ShouldReturnTransactions.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.hist-gen [clean,compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.hist-gen [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.HistGenApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/28218/IdeaProjects/txn-control/ci-cd&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/28218/IdeaProjects/txn-control/hist-gen/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\28218\IdeaProjects\txn-control\hist-gen\src\main\resources\db.changelog\v.1.0.0" />
       <recent name="C:\Users\28218\IdeaProjects\txn-control\hist-gen\src\main\resources\db.changelog" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TransactionServiceTest">
+  <component name="RunManager" selected="Spring Boot.HistGenApplication">
     <configuration name="All in hist-gen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hist-gen" />
       <option name="PACKAGE_NAME" value="" />
@@ -189,7 +224,10 @@
       <workItem from="1735487796990" duration="3725000" />
       <workItem from="1735515143858" duration="27000" />
       <workItem from="1735553232522" duration="606000" />
-      <workItem from="1735571416375" duration="8532000" />
+      <workItem from="1735571416375" duration="8598000" />
+      <workItem from="1735639127042" duration="204000" />
+      <workItem from="1735643172504" duration="46000" />
+      <workItem from="1735730600010" duration="632000" />
     </task>
     <servers />
   </component>

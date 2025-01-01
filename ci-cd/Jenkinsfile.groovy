@@ -22,6 +22,13 @@ pipeline {
             }
         }
 
+        stage('Start Infrastructure') {
+            steps {
+                echo 'Starting infrastructure using docker-compose...'
+                sh 'docker-compose -f docker-compose.yaml up -d'
+            }
+        }
+
         //Hist gen
         stage('Compile Build and Test HistGen') {
             steps {

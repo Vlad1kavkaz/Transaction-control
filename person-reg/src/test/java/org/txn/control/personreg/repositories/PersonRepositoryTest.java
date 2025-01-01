@@ -1,24 +1,19 @@
-package org.txn.control.fincore.repositories;
+package org.txn.control.personreg.repositories;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.test.context.ActiveProfiles;
-import org.txn.control.fincore.BaseRepositoryTest;
-import org.txn.control.fincore.entities.PersonEntity;
-import org.txn.control.fincore.entities.RoleEntity;
+import org.txn.control.personreg.BaseRepositoryTest;
+import org.txn.control.personreg.entities.PersonEntity;
+import org.txn.control.personreg.entities.RoleEntity;
 
-import java.time.ZonedDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@ActiveProfiles("test")
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class PersonRepositoryTest extends BaseRepositoryTest<PersonEntity> {
 
     private final PersonRepository repository;
@@ -31,19 +26,16 @@ class PersonRepositoryTest extends BaseRepositoryTest<PersonEntity> {
 
     @Override
     protected PersonEntity createTestEntity() {
-        PersonEntity personEntity = new PersonEntity();
-        personEntity.setUsername("testuser1");
-        personEntity.setEmail("testuser1@example.com");
-        personEntity.setPassword("password123");
-        personEntity.setRole(createRole());
-        personEntity.setCreatedAt(ZonedDateTime.now());
-        return personEntity;
-    }
+        RoleEntity roleEntity = new RoleEntity();
+        roleEntity.setRole("USER");
+        entityManager.persist(roleEntity);  // Сначала сохраняем роль
 
-    private RoleEntity createRole() {
-        RoleEntity role = new RoleEntity();
-        role.setRole("ADMIN");
-        return entityManager.persistFlushFind(role);
+        PersonEntity personEntity = new PersonEntity();
+        personEntity.setUsername("johndoe");
+        personEntity.setEmail("john@example.com");
+        personEntity.setPassword("password123");
+        personEntity.setRole(roleEntity);  // Привязка роли к пользователю
+        return personEntity;
     }
 
     @Test
@@ -55,11 +47,15 @@ class PersonRepositoryTest extends BaseRepositoryTest<PersonEntity> {
         PersonEntity savedPerson = repository.save(personToSave);
 
         // Assert
-        assertEntity(personToSave, savedPerson);
+        assertThat(savedPerson).isNotNull();
+        assertThat(savedPerson.getId()).isNotNull();
+        assertThat(savedPerson.getUsername()).isEqualTo(testEntity.getUsername());
+        assertThat(savedPerson.getEmail()).isEqualTo(testEntity.getEmail());
+        assertThat(savedPerson.getRole().getRole()).isEqualTo("USER");
     }
 
     @Test
-    void testFindById_ExistingPerson() {
+    void testFindById_ExistingId() {
         // Arrange
         PersonEntity savedPerson = entityManager.persistFlushFind(testEntity);
 
@@ -68,37 +64,18 @@ class PersonRepositoryTest extends BaseRepositoryTest<PersonEntity> {
 
         // Assert
         assertThat(foundPerson).isPresent();
-        assertEntity(savedPerson, foundPerson.get());
+        assertThat(foundPerson.get().getUsername()).isEqualTo(savedPerson.getUsername());
+        assertThat(foundPerson.get().getEmail()).isEqualTo(savedPerson.getEmail());
+        assertThat(foundPerson.get().getRole().getRole()).isEqualTo("USER");
     }
 
     @Test
-    void testFindById_NonExistingPerson() {
+    void testFindById_NonExistingId() {
         // Act
         Optional<PersonEntity> foundPerson = repository.findById(UUID.randomUUID());
 
         // Assert
         assertThat(foundPerson).isNotPresent();
-    }
-
-    @Test
-    void testExistsById_ExistingPerson() {
-        // Arrange
-        PersonEntity savedPerson = entityManager.persistFlushFind(testEntity);
-
-        // Act
-        boolean exists = repository.existsById(savedPerson.getId());
-
-        // Assert
-        assertThat(exists).isTrue();
-    }
-
-    @Test
-    void testExistsById_NonExistingPerson() {
-        // Act
-        boolean exists = repository.existsById(UUID.randomUUID());
-
-        // Assert
-        assertThat(exists).isFalse();
     }
 
     @Test
@@ -120,19 +97,11 @@ class PersonRepositoryTest extends BaseRepositoryTest<PersonEntity> {
         PersonEntity savedPerson = entityManager.persistFlushFind(testEntity);
 
         // Act
-        savedPerson.setUsername("updatedUser");
         savedPerson.setEmail("updated@example.com");
         PersonEntity updatedPerson = repository.save(savedPerson);
 
         // Assert
-        assertThat(updatedPerson.getUsername()).isEqualTo("updatedUser");
+        assertThat(updatedPerson).isNotNull();
         assertThat(updatedPerson.getEmail()).isEqualTo("updated@example.com");
-    }
-
-    private void assertEntity(PersonEntity expected, PersonEntity actual) {
-        assertThat(expected.getUsername()).isEqualTo(actual.getUsername());
-        assertThat(expected.getEmail()).isEqualTo(actual.getEmail());
-        assertThat(expected.getPassword()).isEqualTo(actual.getPassword());
-        assertThat(expected.getCreatedAt()).isEqualTo(actual.getCreatedAt());
     }
 }

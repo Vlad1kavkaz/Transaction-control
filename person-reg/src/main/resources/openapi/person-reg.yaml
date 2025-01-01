@@ -1,0 +1,219 @@
+openapi: 3.0.0
+info:
+  title: PersonReg API
+  description: API для управления пользователями и ролями
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8084
+    description: Local server
+
+paths:
+  /roles:
+    post:
+      summary: Создать новую роль
+      operationId: createRole
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleCreateRequest'
+      responses:
+        '201':
+          description: Роль успешно создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+        '400':
+          description: Некорректные данные запроса
+        '409':
+          description: Роль с таким именем уже существует
+        '500':
+          description: Внутренняя ошибка сервера
+
+  /roles/{id}:
+    delete:
+      summary: Удалить роль по ID
+      operationId: deleteRole
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Роль удалена
+        '404':
+          description: Роль не найдена
+        '500':
+          description: Внутренняя ошибка сервера
+
+  /person:
+    post:
+      summary: Создать нового пользователя
+      operationId: createPerson
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonCreateRequest'
+      responses:
+        '201':
+          description: Пользователь успешно создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        '400':
+          description: Некорректные данные запроса
+        '409':
+          description: Пользователь с таким email уже существует
+        '500':
+          description: Внутренняя ошибка сервера
+
+  /person/{id}:
+    get:
+      summary: Получить пользователя по ID
+      operationId: getPersonById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Пользователь найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        '404':
+          description: Пользователь не найден
+        '500':
+          description: Внутренняя ошибка сервера
+
+    delete:
+      summary: Удалить пользователя по ID
+      operationId: deletePerson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Пользователь удален
+        '404':
+          description: Пользователь не найден
+        '500':
+          description: Внутренняя ошибка сервера
+
+  /person/{id}/assign-role:
+    patch:
+      summary: Назначить роль пользователю
+      operationId: assignRoleToPerson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignRoleRequest'
+      responses:
+        '200':
+          description: Роль успешно назначена пользователю
+        '400':
+          description: Некорректный запрос
+        '404':
+          description: Пользователь или роль не найдены
+        '409':
+          description: Роль уже назначена пользователю
+        '500':
+          description: Внутренняя ошибка сервера
+
+components:
+  schemas:
+    Role:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        role:
+          type: string
+          enum:
+            - ADMIN
+            - USER
+
+    RoleCreateRequest:
+      type: object
+      required:
+        - role
+      properties:
+        role:
+          type: string
+          enum:
+            - ADMIN
+            - USER
+          example: USER
+
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          $ref: '#/components/schemas/Role'
+
+    PersonCreateRequest:
+      type: object
+      required:
+        - username
+        - email
+        - password
+        - roleId
+      properties:
+        username:
+          type: string
+          example: johndoe
+        email:
+          type: string
+          format: email
+          example: johndoe@example.com
+        password:
+          type: string
+          example: strongpassword123
+        roleId:
+          type: string
+          format: uuid
+
+    AssignRoleRequest:
+      type: object
+      required:
+        - roleId
+      properties:
+        roleId:
+          type: string
+          format: uuid
+          example: f47ac10b-58cc-4372-a567-0e02b2c3d479

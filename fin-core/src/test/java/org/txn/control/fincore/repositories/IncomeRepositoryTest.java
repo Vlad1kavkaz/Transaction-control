@@ -8,6 +8,7 @@ import org.txn.control.fincore.BaseRepositoryTest;
 import org.txn.control.fincore.entities.BankEntity;
 import org.txn.control.fincore.entities.IncomeEntity;
 import org.txn.control.fincore.entities.PersonEntity;
+import org.txn.control.fincore.entities.RoleEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -46,6 +47,7 @@ class IncomeRepositoryTest extends BaseRepositoryTest<IncomeEntity> {
         user.setEmail("testuser@example.com");
         user.setPassword("password123");
         user.setUsername("testuser1");
+        user.setRole(createRole());
         return entityManager.persistFlushFind(user);
     }
 
@@ -54,6 +56,12 @@ class IncomeRepositoryTest extends BaseRepositoryTest<IncomeEntity> {
         bank.setCountry("Russia");
         bank.setName("VTB Bank");
         return entityManager.persistFlushFind(bank);
+    }
+
+    private RoleEntity createRole() {
+        RoleEntity role = new RoleEntity();
+        role.setRole("ADMIN");
+        return entityManager.persistFlushFind(role);
     }
 
     @Test
