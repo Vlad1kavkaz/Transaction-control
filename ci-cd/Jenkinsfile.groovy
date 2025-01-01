@@ -12,6 +12,10 @@ pipeline {
         IMAGE_HIST_GEN = 'hist-gen'
         PORT_MAPPING_HIST_GEN = '8087:8087'
         SERVICE_NAME_HIST_GEN = 'hist-gen'
+
+        IMAGE_PERSON_REG = 'person-reg'
+        PORT_MAPPING_PERSON_REG = '8084:8084'
+        SERVICE_NAME_PERSON_REG = 'person-reg'
     }
 
     stages {
@@ -44,10 +48,32 @@ pipeline {
             }
         }
 
-        stage('Run Docker Container Hist Gen') {
+        stage('Run Docker Container HistGen') {
             steps {
                 echo "Running Docker container for ${SERVICE_NAME_HIST_GEN}..."
                 sh "docker run -d --name ${IMAGE_HIST_GEN} --network ${NETWORK_NAME} -p ${PORT_MAPPING_HIST_GEN} ${IMAGE_HIST_GEN}"
+            }
+        }
+
+        //Person Reg
+        stage('Compile Build and Test PersonReg') {
+            steps {
+                echo "Compiling and building the project in ${SERVICE_NAME_PERSON_REG}..."
+                sh "cd ${SERVICE_NAME_PERSON_REG} && mvn clean package"
+            }
+        }
+
+        stage('Build Docker Image PeronReg') {
+            steps {
+                echo "Building Docker image for ${SERVICE_NAME_PERSON_REG}..."
+                sh "docker build -t ${IMAGE_PERSON_REG} ${SERVICE_NAME_PERSON_REG}"
+            }
+        }
+
+        stage('Run Docker Container PersonReg') {
+            steps {
+                echo "Running Docker container for ${SERVICE_NAME_PERSON_REG}..."
+                sh "docker run -d --name ${IMAGE_PERSON_REG} --network ${NETWORK_NAME} -p ${PORT_MAPPING_PERSON_REG} ${IMAGE_PERSON_REG}"
             }
         }
 

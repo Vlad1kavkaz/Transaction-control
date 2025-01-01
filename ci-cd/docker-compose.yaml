@@ -2,6 +2,7 @@ version: "3.8"
 
 networks:
   txn_control_jenkins_network:
+    external: true
 
 services:
   zookeeper:
