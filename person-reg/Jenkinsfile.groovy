@@ -35,13 +35,23 @@ pipeline {
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Redeploy Docker Container') {
             when {
                 expression { params.BRANCH_NAME == 'master' }
             }
             steps {
-                echo "Running Docker container for ${SERVICE_NAME} on branch ${BRANCH_NAME}..."
-                sh "docker run -d --name ${DOCKER_IMAGE} --network ${NETWORK_NAME} -p ${PORT_MAPPING} ${DOCKER_IMAGE}"
+                script {
+                    def containerExists = sh(script: "docker ps -q -f name=${DOCKER_IMAGE}", returnStdout: true).trim()
+
+                    if (containerExists) {
+                        echo "Stopping and removing existing container ${DOCKER_IMAGE}..."
+                        sh "docker stop ${DOCKER_IMAGE}"
+                        sh "docker rm ${DOCKER_IMAGE}"
+                    }
+
+                    echo "Running new Docker container for ${SERVICE_NAME} on branch ${BRANCH_NAME}..."
+                    sh "docker run -d --name ${DOCKER_IMAGE} --network ${NETWORK_NAME} -p ${PORT_MAPPING} ${DOCKER_IMAGE}"
+                }
             }
         }
     }

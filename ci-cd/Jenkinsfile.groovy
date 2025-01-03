@@ -16,6 +16,10 @@ pipeline {
         IMAGE_PERSON_REG = 'person-reg'
         PORT_MAPPING_PERSON_REG = '8084:8084'
         SERVICE_NAME_PERSON_REG = 'person-reg'
+
+        IMAGE_FIN_ANALYTICS = 'fin-analytics'
+        PORT_MAPPING_FIN_ANALYTICS = '8086:8086'
+        SERVICE_NAME_FIN_ANALYTICS = 'fin-analytics'
     }
 
     stages {
@@ -96,6 +100,28 @@ pipeline {
             steps {
                 echo "Running Docker container for ${SERVICE_NAME_FIN_CORE}..."
                 sh "docker run -d --name ${IMAGE_FIN_CORE} --network ${NETWORK_NAME} -p ${PORT_MAPPING_FIN_CORE} ${IMAGE_FIN_CORE}"
+            }
+        }
+
+        //Fin Analytics
+        stage('Compile and Build FinAnalytics') {
+            steps {
+                echo "Compiling and building the project in ${SERVICE_NAME_FIN_ANALYTICS}..."
+                sh "cd ${SERVICE_NAME_FIN_ANALYTICS} && mvn clean package"
+            }
+        }
+
+        stage('Build Docker Image FinAnalytics') {
+            steps {
+                echo "Building Docker image for ${SERVICE_NAME_FIN_ANALYTICS}..."
+                sh "docker build -t ${IMAGE_FIN_ANALYTICS} ${SERVICE_NAME_FIN_ANALYTICS}"
+            }
+        }
+
+        stage('Run Docker Container FinAnalytics') {
+            steps {
+                echo "Running Docker container for ${SERVICE_NAME_FIN_ANALYTICS}..."
+                sh "docker run -d --name ${IMAGE_FIN_ANALYTICS} --network ${NETWORK_NAME} -p ${PORT_MAPPING_FIN_ANALYTICS} ${IMAGE_FIN_ANALYTICS}"
             }
         }
     }
