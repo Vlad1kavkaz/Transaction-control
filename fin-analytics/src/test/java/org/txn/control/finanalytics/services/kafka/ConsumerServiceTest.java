@@ -6,11 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.txn.control.finanalytics.model.Transaction;
 import org.txn.control.finanalytics.model.TransactionsFilterRequestDto;
-import org.txn.control.finanalytics.services.AnalyticsService;
+import org.txn.control.finanalytics.services.AnalyticsUtils;
 
-import java.util.List;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -23,7 +21,7 @@ class ConsumerServiceTest {
     private ConsumerService kafkaConsumerService;
 
     @Mock
-    private AnalyticsService analyticsService;
+    private AnalyticsUtils analyticsUtils;
 
     private String key;
 
@@ -38,15 +36,11 @@ class ConsumerServiceTest {
         TransactionsFilterRequestDto filterRequest = new TransactionsFilterRequestDto();
         filterRequest.setUserId(UUID.randomUUID());
         filterRequest.setType(TransactionsFilterRequestDto.TypeEnum.EXPENSE);
-        Transaction transaction = new Transaction();
-        transaction.setId(UUID.randomUUID());
-        transaction.setUserId(UUID.randomUUID());
-        List<Transaction> transactions = List.of(transaction);
 
         // Act
         kafkaConsumerService.consumeTransactions(filterRequest, key);
 
         // Assert
-        verify(analyticsService).completeRequest(any(), any());
+        verify(analyticsUtils).completeRequest(any(), any());
     }
 }

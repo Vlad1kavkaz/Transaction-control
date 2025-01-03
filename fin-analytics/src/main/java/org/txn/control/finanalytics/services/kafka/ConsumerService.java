@@ -9,6 +9,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import org.txn.control.finanalytics.model.Transaction;
 import org.txn.control.finanalytics.services.AnalyticsService;
+import org.txn.control.finanalytics.services.AnalyticsUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ConsumerService {
 
-    private final AnalyticsService analyticsService;
+    private final AnalyticsUtils analyticsUtils;
 
     @KafkaListener(
             topics = "${spring.kafka.topics.transactions-topic-out}",
@@ -39,7 +40,7 @@ public class ConsumerService {
             transactions =  List.of(transaction);
         }
 
-        analyticsService.completeRequest(key, transactions);
+        analyticsUtils.completeRequest(key, transactions);
     }
 
     @SuppressWarnings("unchecked")

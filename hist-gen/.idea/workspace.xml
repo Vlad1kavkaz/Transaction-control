@@ -4,48 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="effb93e6-8812-46a1-b42d-ce3c75733e5d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/entities/RoleEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/Jenkinsfile.groovy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/PersonRegApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/controllers/PersonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/controllers/RoleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/entities/PersonEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/entities/RoleEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/exception/ErrorHandlingControllerAdvice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/exception/PersonNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/exception/RoleNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/mappers/RequestMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/mappers/ResponseMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/repositories/PersonRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/repositories/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/services/PersonService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/java/org/txn/control/personreg/services/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/application-local.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/db.changelog/master.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/db.changelog/v.1.0.0/001_create_tables.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/openapi/person-reg.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/controllers/PersonControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/controllers/RoleControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/exception/ErrorHandlingControllerAdviceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/mappers/RequestMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/mappers/ResponseMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/repositories/RoleRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/services/PersonServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../person-reg/src/test/java/org/txn/control/personreg/services/RoleServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ci-cd/Jenkinsfile.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../ci-cd/Jenkinsfile.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/entities/PersonEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/java/org/txn/control/fincore/entities/PersonEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/resources/db/changelog/v.1.0.0/001_create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/resources/db/changelog/v.1.0.0/001_create_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/ExpenseRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/ExpenseRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/IncomeRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/IncomeRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/PersonRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/test/java/org/txn/control/fincore/repositories/PersonRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="effb93e6-8812-46a1-b42d-ce3c75733e5d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -229,6 +188,7 @@
       <workItem from="1735643172504" duration="46000" />
       <workItem from="1735730600010" duration="632000" />
       <workItem from="1735746695095" duration="7000" />
+      <workItem from="1735873759966" duration="74000" />
     </task>
     <servers />
   </component>
