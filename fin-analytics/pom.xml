@@ -221,7 +221,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.3.1</version>
                 <configuration>
-                    <mainClass>org.txn.control.finanalytics.FinCoreApplication</mainClass>
+                    <mainClass>org.txn.control.finanalytics.FinAnalyticsApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
