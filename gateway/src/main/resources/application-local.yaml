@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: fin-core
+          uri: http://localhost:8085
+          predicates:
+            - Path=/fin-core/**
+          filters:
+            - RewritePath=/fin-core/(?<segment>.*), /${segment}

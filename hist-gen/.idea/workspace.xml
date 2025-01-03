@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="effb93e6-8812-46a1-b42d-ce3c75733e5d" name="Changes" comment="" />
+    <list default="true" id="effb93e6-8812-46a1-b42d-ce3c75733e5d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../fin-analytics/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-analytics/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fin-core/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../fin-core/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../person-reg/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../person-reg/src/main/resources/application.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -189,6 +194,7 @@
       <workItem from="1735730600010" duration="632000" />
       <workItem from="1735746695095" duration="7000" />
       <workItem from="1735873759966" duration="74000" />
+      <workItem from="1735924033178" duration="60000" />
     </task>
     <servers />
   </component>

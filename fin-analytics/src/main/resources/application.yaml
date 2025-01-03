@@ -4,3 +4,5 @@ server:
 spring:
   profiles:
     active: local
+  application:
+    name: fin-analytics
