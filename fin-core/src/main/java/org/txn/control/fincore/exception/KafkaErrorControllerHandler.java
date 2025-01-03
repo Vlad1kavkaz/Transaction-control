@@ -14,7 +14,7 @@ import org.springframework.validation.FieldError;
 @Slf4j
 @Component
 @ConditionalOnProperty(value = "spring.kafka.enabled", havingValue = "true")
-public class KafkaControllerHandler implements KafkaListenerErrorHandler {
+public class KafkaErrorControllerHandler implements KafkaListenerErrorHandler {
 
     @Override
     public @NonNull Object handleError(@NonNull Message<?> message, ListenerExecutionFailedException exception) {

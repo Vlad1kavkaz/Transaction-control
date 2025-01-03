@@ -33,7 +33,7 @@ pipeline {
             }
         }
 
-        //Hist gen
+        //Hist Gen
         stage('Compile Build and Test HistGen') {
             steps {
                 echo "Compiling and building the project in ${SERVICE_NAME_HIST_GEN}..."

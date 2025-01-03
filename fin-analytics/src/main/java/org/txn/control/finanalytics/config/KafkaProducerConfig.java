@@ -1,4 +1,4 @@
-package org.txn.control.fincore.config;
+package org.txn.control.finanalytics.config;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;

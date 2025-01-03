@@ -1,0 +1,311 @@
+openapi: 3.0.0
+info:
+  title: Analytics Service API
+  description: API for analyzing user transactions and financial data.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8086/v1/api
+    description: Local development server
+paths:
+  /analytics/summary/{userId}:
+    get:
+      summary: Get overall analytics summary for a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: User's overall transaction summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+        '400':
+          description: Invalid user ID
+        '404':
+          description: User not found
+
+  /analytics/incomes-by-bank/{userId}:
+    get:
+      summary: Get user incomes grouped by bank
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Incomes grouped by bank
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankIncomeResponse'
+        '400':
+          description: Invalid user ID
+        '404':
+          description: User not found
+
+  /analytics/top-expenses/{userId}:
+    get:
+      summary: Get top 5 expenses for a user within a date range
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: startDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Top 5 expenses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopExpensesResponse'
+        '400':
+          description: Invalid request parameters
+        '404':
+          description: User not found
+
+  /analytics/income-vs-expense/{userId}:
+    get:
+      summary: Compare user incomes and expenses
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Comparison of incomes and expenses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncomeVsExpenseResponse'
+        '400':
+          description: Invalid user ID
+        '404':
+          description: User not found
+
+  /analytics/monthly-history/{userId}:
+    get:
+      summary: Get monthly transaction history
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Monthly transaction history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyHistoryResponse'
+        '400':
+          description: Invalid user ID
+        '404':
+          description: User not found
+
+  /analytics/bank-summary/{userId}:
+    get:
+      summary: Get overall analytics by bank for a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Bank summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankSummaryResponse'
+        '400':
+          description: Invalid user ID
+        '404':
+          description: User not found
+
+  /analytics/prediction/{userId}:
+    get:
+      summary: Predict user expenses based on history
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Expense prediction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionResponse'
+        '400':
+          description: Invalid user ID
+        '404':
+          description: User not found
+
+  /analytics/top-categories/{userId}:
+    get:
+      summary: Get categories with highest expenses
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Top categories by expense
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopCategoriesResponse'
+        '400':
+          description: Invalid user ID
+        '404':
+          description: User not found
+
+components:
+  schemas:
+    SummaryResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        totalIncome:
+          type: number
+          format: double
+        totalExpense:
+          type: number
+          format: double
+        balance:
+          type: number
+          format: double
+
+    CategoryExpenseResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          category:
+            type: string
+          totalAmount:
+            type: number
+
+    BankIncomeResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          bankName:
+            type: string
+          totalIncome:
+            type: number
+
+    TopExpensesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          amount:
+            type: number
+          description:
+            type: string
+          date:
+            type: string
+            format: date
+
+    IncomeVsExpenseResponse:
+      type: object
+      properties:
+        income:
+          type: number
+        expense:
+          type: number
+
+    MonthlyHistoryResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          month:
+            type: string
+          income:
+            type: number
+          expense:
+            type: number
+
+    BankSummaryResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          bankName:
+            type: string
+          income:
+            type: number
+          expense:
+            type: number
+
+    PredictionResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          category:
+            type: string
+          predictedAmount:
+            type: number
+
+    TopCategoriesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          category:
+            type: string
+          totalAmount:
+            type: number

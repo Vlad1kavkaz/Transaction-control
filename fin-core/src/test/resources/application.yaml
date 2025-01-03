@@ -30,11 +30,7 @@ spring:
     enabled: true
     bootstrap-servers: localhost:29092
     topics:
-      banks-topic-in: banks-topic-in
-      categories-topic-in: categories-topic-in
       transactions-topic-in: transactions-topic-in
-      banks-topic-out: banks-topic-out
-      categories-topic-out: categories-topic-out
       transactions-topic-out: transactions-topic-out
     consumer:
       group-id: fin-core-group

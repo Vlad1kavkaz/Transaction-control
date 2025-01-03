@@ -1,4 +1,4 @@
-package org.txn.control.fincore.config;
+package org.txn.control.finanalytics.config;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -23,6 +23,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import java.net.SocketTimeoutException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @EnableKafka
@@ -57,11 +58,15 @@ public class KafkaConsumerConfig implements KafkaListenerConfigurer {
 
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         properties.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JsonDeserializer.class.getName());
-
         properties.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
 
-        return new DefaultKafkaConsumerFactory<>(properties);
+        JsonDeserializer<Object> deserializer = new JsonDeserializer<>();
+        deserializer.addTrustedPackages("org.txn.control.fincore.model");
+        deserializer.addTrustedPackages("java.util");
+
+        return new DefaultKafkaConsumerFactory<>(properties, new JsonDeserializer<>(), deserializer);
     }
+
 
 
     @Bean
@@ -83,10 +88,10 @@ public class KafkaConsumerConfig implements KafkaListenerConfigurer {
     @Bean
     public Jackson2JavaTypeMapper typeMapper() {
         DefaultJackson2JavaTypeMapper typeMapper = new DefaultJackson2JavaTypeMapper();
-
         Map<String, Class<?>> idClassMapping = new HashMap<>();
-        idClassMapping.put("org.txn.control.finanalytics.model.TransactionsFilterRequestDto",
-                org.txn.control.fincore.model.TransactionsFilterRequestDto.class);
+
+        idClassMapping.put("org.txn.control.fincore.model.Transaction", org.txn.control.finanalytics.model.Transaction.class);
+        idClassMapping.put("java.util.List<org.txn.control.fincore.model.Transaction>", List.class);
 
         typeMapper.setIdClassMapping(idClassMapping);
         return typeMapper;

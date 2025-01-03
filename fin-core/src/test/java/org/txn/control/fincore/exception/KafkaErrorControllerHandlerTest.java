@@ -23,10 +23,10 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class KafkaControllerHandlerTest {
+class KafkaErrorControllerHandlerTest {
 
     @InjectMocks
-    private KafkaControllerHandler kafkaControllerHandler;
+    private KafkaErrorControllerHandler kafkaControllerHandler;
 
     @Mock
     private Message<String> message;
