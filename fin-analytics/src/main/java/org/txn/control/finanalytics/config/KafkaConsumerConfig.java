@@ -60,11 +60,7 @@ public class KafkaConsumerConfig implements KafkaListenerConfigurer {
         properties.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JsonDeserializer.class.getName());
         properties.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
 
-        JsonDeserializer<Object> deserializer = new JsonDeserializer<>();
-        deserializer.addTrustedPackages("org.txn.control.fincore.model");
-        deserializer.addTrustedPackages("java.util");
-
-        return new DefaultKafkaConsumerFactory<>(properties, new JsonDeserializer<>(), deserializer);
+        return new DefaultKafkaConsumerFactory<>(properties);
     }
 
 
