@@ -1,4 +1,4 @@
-package org.txn.control.gateway.gateway;
+package org.txn.control.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -8,3 +8,6 @@ spring:
     active: local
   main:
     web-application-type: reactive
+
+jwt:
+  secret: Vlad1kavkaz

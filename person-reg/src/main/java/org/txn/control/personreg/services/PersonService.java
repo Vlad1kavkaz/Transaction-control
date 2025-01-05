@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.txn.control.fincore.model.AssignRoleRequest;
+import org.txn.control.fincore.model.ExistUser200Response;
+import org.txn.control.fincore.model.ExistUserRequest;
 import org.txn.control.fincore.model.Person;
 import org.txn.control.fincore.model.PersonCreateRequest;
 import org.txn.control.personreg.entities.PersonEntity;
@@ -57,5 +59,14 @@ public class PersonService {
 
         personEntity.setRole(roleEntity);
         personRepository.save(personEntity);
+    }
+
+    public ExistUser200Response existUser(ExistUserRequest request) {
+        return ExistUser200Response.builder()
+                .role(personRepository.findByUsernameAndPassword(request.getUsername(), request.getPassword())
+                        .orElseThrow(() -> new PersonNotFoundException("Person not found with username [%s]"
+                                .formatted(request.getUsername())))
+                        .getRole().getRole())
+                .build();
     }
 }

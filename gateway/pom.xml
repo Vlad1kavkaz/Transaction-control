@@ -51,6 +51,23 @@
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -71,7 +88,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.3.1</version>
                 <configuration>
-                    <mainClass>org.txn.control.gateway.gateway.GatewayApplication</mainClass>
+                    <mainClass>org.txn.control.gateway.GatewayApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

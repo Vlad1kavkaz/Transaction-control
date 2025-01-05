@@ -2,9 +2,33 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: person-reg-no-token
+          uri: http://localhost:8084
+          predicates:
+            - Path=/person-reg/v1/api/exist-user
+          filters:
+            - RewritePath=/person-reg/v1/api/(?<segment>.*), /${segment}
+
+        - id: person-reg-with-token
+          uri: http://localhost:8084
+          predicates:
+            - Path=/person-reg/**
+          filters:
+            - RewritePath=/person-reg/(?<segment>.*), /${segment}
+            - Filter=JwtAuthFilter
+
         - id: fin-core
           uri: http://localhost:8085
           predicates:
             - Path=/fin-core/**
           filters:
             - RewritePath=/fin-core/(?<segment>.*), /${segment}
+            - Filter=JwtAuthFilter
+
+        - id: fin-analytics
+          uri: http://localhost:8086
+          predicates:
+            - Path=/fin-analytics/**
+          filters:
+            - RewritePath=/fin-analytics/(?<segment>.*), /${segment}
+            - Filter=JwtAuthFilter

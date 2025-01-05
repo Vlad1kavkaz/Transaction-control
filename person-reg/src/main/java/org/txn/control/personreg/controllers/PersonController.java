@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.txn.control.fincore.api.PersonApiDelegate;
 import org.txn.control.fincore.model.AssignRoleRequest;
+import org.txn.control.fincore.model.ExistUser200Response;
+import org.txn.control.fincore.model.ExistUserRequest;
 import org.txn.control.fincore.model.Person;
 import org.txn.control.fincore.model.PersonCreateRequest;
 import org.txn.control.personreg.services.PersonService;
@@ -30,6 +32,12 @@ public class PersonController implements PersonApiDelegate {
     public ResponseEntity<Person> createPerson(PersonCreateRequest personCreateRequest) {
         log.info("Create person {}", personCreateRequest);
         return ResponseEntity.ok(personService.createPerson(personCreateRequest));
+    }
+
+    @Override
+    public ResponseEntity<ExistUser200Response> existUser(ExistUserRequest existUserRequest) {
+        log.info("Exist user {}", existUserRequest);
+        return ResponseEntity.ok(personService.existUser(existUserRequest));
     }
 
     @Override

@@ -146,6 +146,31 @@ paths:
         '500':
           description: Внутренняя ошибка сервера
 
+  /person/exist-user:
+    post:
+      summary: авторизация
+      operationId: existUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExistUserRequest'
+      responses:
+        '200':
+          description: Роль успешно получена
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  role:
+                    type: string
+        '400':
+          description: Ошибка в кредах
+        '500':
+          description: Внутренняя ошибка сервера
+
 components:
   schemas:
     Role:
@@ -217,3 +242,14 @@ components:
           type: string
           format: uuid
           example: f47ac10b-58cc-4372-a567-0e02b2c3d479
+
+    ExistUserRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
