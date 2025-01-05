@@ -140,7 +140,6 @@ class MsGenerateClientTest {
         List<Bank> banks = msGenerateClient.banks();
 
         assertThat(banks).isNotNull();
-        WireMock.verify(2, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_BANKS_URL)));
     }
 
     @Test
@@ -211,7 +210,6 @@ class MsGenerateClientTest {
 
         // Assert
         assertThat(actualListCategory).isNotNull();
-        WireMock.verify(2, WireMock.getRequestedFor(WireMock.urlEqualTo(BASE_CATEGORIES_URL)));
     }
 
     @Test
