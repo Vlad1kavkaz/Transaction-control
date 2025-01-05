@@ -16,7 +16,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   kafka:
     enabled: true
-    bootstrap-servers: http://kafka:29092
+    bootstrap-servers: http://kafka:9092
     topics:
       transactions-topic-in: transactions-topic-in
       transactions-topic-out: transactions-topic-out
