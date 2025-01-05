@@ -1,0 +1,34 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: person-reg-no-token
+          uri: http://person-reg:8084
+          predicates:
+            - Path=/person-reg/v1/api/person/exist-user
+          filters:
+            - RewritePath=/person-reg/(?<segment>.*), /${segment}
+
+        - id: person-reg-with-token
+          uri: http://person-reg:8084
+          predicates:
+            - Path=/person-reg/**
+          filters:
+            - RewritePath=/person-reg/(?<segment>.*), /${segment}
+            - RoleToken
+
+        - id: fin-core
+          uri: http://fin-core:8085
+          predicates:
+            - Path=/fin-core/**
+          filters:
+            - RewritePath=/fin-core/(?<segment>.*), /${segment}
+            - RoleToken
+
+        - id: fin-analytics
+          uri: http://fin-analytics:8086
+          predicates:
+            - Path=/fin-analytics/**
+          filters:
+            - RewritePath=/fin-analytics/(?<segment>.*), /${segment}
+            - RoleToken

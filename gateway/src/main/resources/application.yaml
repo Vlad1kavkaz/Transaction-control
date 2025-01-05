@@ -10,4 +10,4 @@ spring:
     web-application-type: reactive
 
 jwt:
-  secret: Vlad1kavkaz
+  secret: Vlad1kavkazSecretKeyVlad1kavkazKey

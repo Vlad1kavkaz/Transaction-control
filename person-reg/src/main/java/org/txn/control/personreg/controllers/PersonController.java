@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import org.txn.control.fincore.api.PersonApiDelegate;
-import org.txn.control.fincore.model.AssignRoleRequest;
-import org.txn.control.fincore.model.ExistUser200Response;
-import org.txn.control.fincore.model.ExistUserRequest;
-import org.txn.control.fincore.model.Person;
-import org.txn.control.fincore.model.PersonCreateRequest;
+import org.txn.control.personreg.api.PersonApiDelegate;
+import org.txn.control.personreg.model.AssignRoleRequest;
+import org.txn.control.personreg.model.ExistUser200Response;
+import org.txn.control.personreg.model.ExistUserRequest;
+import org.txn.control.personreg.model.Person;
+import org.txn.control.personreg.model.PersonCreateRequest;
 import org.txn.control.personreg.services.PersonService;
 
 import java.util.UUID;

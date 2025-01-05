@@ -53,6 +53,22 @@
         </dependency>
 
         <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
@@ -179,14 +195,11 @@
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
                                 <useSpringBoot3>true</useSpringBoot3>
-                                <modelPropertyNaming>camelCase</modelPropertyNaming>
-                                <dateLibrary>java8</dateLibrary>
-                                <useLombok>true</useLombok>
                                 <additionalModelTypeAnnotations>@lombok.Builder</additionalModelTypeAnnotations>
                             </configOptions>
                             <generateApis>true</generateApis>
-                            <apiPackage>org.txn.control.fincore.api</apiPackage>
-                            <modelPackage>org.txn.control.fincore.model</modelPackage>
+                            <apiPackage>org.txn.control.personreg.api</apiPackage>
+                            <modelPackage>org.txn.control.personreg.model</modelPackage>
                             <inputSpec>${project.basedir}/src/main/resources/openapi/person-reg.yaml</inputSpec>
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>

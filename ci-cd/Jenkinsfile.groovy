@@ -5,13 +5,13 @@ pipeline {
         REPO_URL = 'https://github.com/Vlad1kavkaz/Transaction-control.git'
         NETWORK_NAME = 'txn_control_jenkins_network'
 
-        IMAGE_FIN_CORE = 'fin-core'
-        PORT_MAPPING_FIN_CORE = '8085:8085'
-        SERVICE_NAME_FIN_CORE = 'fin-core'
-
         IMAGE_HIST_GEN = 'hist-gen'
         PORT_MAPPING_HIST_GEN = '8087:8087'
         SERVICE_NAME_HIST_GEN = 'hist-gen'
+
+        IMAGE_FIN_CORE = 'fin-core'
+        PORT_MAPPING_FIN_CORE = '8085:8085'
+        SERVICE_NAME_FIN_CORE = 'fin-core'
 
         IMAGE_PERSON_REG = 'person-reg'
         PORT_MAPPING_PERSON_REG = '8084:8084'
@@ -20,6 +20,10 @@ pipeline {
         IMAGE_FIN_ANALYTICS = 'fin-analytics'
         PORT_MAPPING_FIN_ANALYTICS = '8086:8086'
         SERVICE_NAME_FIN_ANALYTICS = 'fin-analytics'
+
+        IMAGE_GATEWAY = 'gateway'
+        PORT_MAPPING_GATEWAY = '8080:8080'
+        SERVICE_NAME_GATEWAY = 'gateway'
     }
 
     stages {
@@ -124,6 +128,28 @@ pipeline {
                 sh "docker run -d --name ${IMAGE_FIN_ANALYTICS} --network ${NETWORK_NAME} -p ${PORT_MAPPING_FIN_ANALYTICS} ${IMAGE_FIN_ANALYTICS}"
             }
         }
+
+        //Gateway
+        stage('Compile and Build Gateway') {
+            steps {
+                echo "Compiling and building the project in ${SERVICE_NAME_GATEWAY}..."
+                sh "cd ${SERVICE_NAME_GATEWAY} && mvn clean package"
+            }
+        }
+
+        stage('Build Docker Image Gateway') {
+            steps {
+                echo "Building Docker image for ${SERVICE_NAME_GATEWAY}..."
+                sh "docker build -t ${IMAGE_GATEWAY} ${SERVICE_NAME_GATEWAY}"
+            }
+        }
+
+        stage('Run Docker Container Gateway') {
+            steps {
+                echo "Running Docker container for ${SERVICE_NAME_GATEWAY}..."
+                sh "docker run -d --name ${IMAGE_GATEWAY} --network ${NETWORK_NAME} -p ${PORT_MAPPING_GATEWAY} ${IMAGE_GATEWAY}"
+            }
+        }
     }
 
     post {
@@ -134,6 +160,9 @@ pipeline {
             echo 'Pipeline failed!'
             sh "docker rm -f ${IMAGE_HIST_GEN}"
             sh "docker rm -f ${IMAGE_FIN_CORE}"
+            sh "docker rm -f ${IMAGE_PERSON_REG}"
+            sh "docker rm -f ${IMAGE_FIN_ANALYTICS}"
+            sh "docker rm -f ${IMAGE_GATEWAY}"
         }
     }
 }

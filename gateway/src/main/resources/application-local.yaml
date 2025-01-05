@@ -5,9 +5,9 @@ spring:
         - id: person-reg-no-token
           uri: http://localhost:8084
           predicates:
-            - Path=/person-reg/v1/api/exist-user
+            - Path=/person-reg/v1/api/person/exist-user
           filters:
-            - RewritePath=/person-reg/v1/api/(?<segment>.*), /${segment}
+            - RewritePath=/person-reg/(?<segment>.*), /${segment}
 
         - id: person-reg-with-token
           uri: http://localhost:8084
@@ -15,7 +15,7 @@ spring:
             - Path=/person-reg/**
           filters:
             - RewritePath=/person-reg/(?<segment>.*), /${segment}
-            - Filter=JwtAuthFilter
+            - RoleToken
 
         - id: fin-core
           uri: http://localhost:8085
@@ -23,7 +23,7 @@ spring:
             - Path=/fin-core/**
           filters:
             - RewritePath=/fin-core/(?<segment>.*), /${segment}
-            - Filter=JwtAuthFilter
+            - RoleToken
 
         - id: fin-analytics
           uri: http://localhost:8086
@@ -31,4 +31,4 @@ spring:
             - Path=/fin-analytics/**
           filters:
             - RewritePath=/fin-analytics/(?<segment>.*), /${segment}
-            - Filter=JwtAuthFilter
+            - RoleToken

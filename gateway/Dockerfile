@@ -1,4 +1,9 @@
-FROM ubuntu:latest
-LABEL authors="28218"
+FROM eclipse-temurin:17-jdk
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+
+COPY target/gateway-1.0.0.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-jar", "app.jar"]

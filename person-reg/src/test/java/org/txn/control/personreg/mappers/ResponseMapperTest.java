@@ -6,8 +6,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.txn.control.fincore.model.Person;
-import org.txn.control.fincore.model.Role;
+import org.txn.control.personreg.model.Person;
+import org.txn.control.personreg.model.Role;
 import org.txn.control.personreg.entities.PersonEntity;
 import org.txn.control.personreg.entities.RoleEntity;
 

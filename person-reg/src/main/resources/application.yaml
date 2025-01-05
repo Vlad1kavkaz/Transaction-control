@@ -6,3 +6,7 @@ spring:
     active: local
   application:
     name: person-reg
+
+jwt:
+  secret: Vlad1kavkazSecretKeyVlad1kavkazKey
+  expiration: 3600

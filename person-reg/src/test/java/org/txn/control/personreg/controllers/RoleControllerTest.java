@@ -7,8 +7,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
-import org.txn.control.fincore.model.Role;
-import org.txn.control.fincore.model.RoleCreateRequest;
+import org.txn.control.personreg.model.Role;
+import org.txn.control.personreg.model.RoleCreateRequest;
 import org.txn.control.personreg.exception.RoleNotFoundException;
 import org.txn.control.personreg.services.RoleService;
 

@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.txn.control.fincore.api.RolesApiDelegate;
-import org.txn.control.fincore.model.Role;
-import org.txn.control.fincore.model.RoleCreateRequest;
+import org.txn.control.personreg.api.RolesApiDelegate;
+import org.txn.control.personreg.model.Role;
+import org.txn.control.personreg.model.RoleCreateRequest;
 import org.txn.control.personreg.services.RoleService;
 
 import java.util.UUID;

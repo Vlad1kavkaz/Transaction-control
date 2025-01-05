@@ -23,7 +23,7 @@ services:
       - zookeeper
     ports:
       - 9092:9092
-      - 29092:29092  # Подключение с хоста
+      - 29092:29092
     hostname: kafka
     environment:
       KAFKA_BROKER_ID: 1
@@ -45,7 +45,7 @@ services:
     restart: always
     environment:
       - KAFKA_CLUSTERS_0_NAME=local
-      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=fin-core-kafka-1:9092
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
     networks:
       - txn_control_jenkins_network
