@@ -31,7 +31,7 @@ class MsGenerateClientTest {
     @Autowired
     private MsGenerateClient msGenerateClient;
 
-    private final String BASE_TRANSACTIONS_URL = "/transactions";
+    private final String BASE_TRANSACTIONS_URL = "/transaction";
     private final String BASE_CATEGORIES_URL = "/categories";
     private final String BASE_BANKS_URL = "/banks";
 
