@@ -2,10 +2,17 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: person-reg-no-token
+        - id: person-reg-no-token-exist
           uri: http://person-reg:8084
           predicates:
             - Path=/person-reg/v1/api/person/exist-user
+          filters:
+            - RewritePath=/person-reg/(?<segment>.*), /${segment}
+
+        - id: person-reg-no-token-reg
+          uri: http://person-reg:8084
+          predicates:
+            - Path=/person-reg/v1/api/person/person
           filters:
             - RewritePath=/person-reg/(?<segment>.*), /${segment}
 

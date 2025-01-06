@@ -18,7 +18,7 @@ import java.util.UUID;
 )
 public interface MsGenerateClient {
 
-    @GetMapping("/transactions/{userId}")
+    @GetMapping("/transaction/{userId}")
     List<Transaction> transaction(@PathVariable UUID userId);
 
     @GetMapping("/banks")

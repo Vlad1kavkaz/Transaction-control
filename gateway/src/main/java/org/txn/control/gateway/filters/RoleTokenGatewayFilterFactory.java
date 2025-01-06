@@ -18,7 +18,9 @@ import java.util.List;
 public class RoleTokenGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
 
     private static final String X_ROLE_TOKEN_HEADER = "X-Role-Token";
-    private static final List<String> ALLOWED_PATHS = List.of("/person-reg/v1/api/exist-user");
+    private static final List<String> ALLOWED_PATHS = List.of(
+            "/person-reg/v1/api/exist-user",
+            "/person-reg/v1/api/person");
 
     private final JwtService jwtService;
 
